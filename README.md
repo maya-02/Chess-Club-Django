@@ -1,15 +1,5 @@
 # Team Walrus Small Group project
 
-## Team members
-The members of the team are:
-- Katinka Singh - K2006918
-- Maya Janbey - K20044805
-- Injun Suh - K20044233
-- Grace Edgecombe - K20006917
-- Timi Disu - K20041416
-
-
-Add any further information about the team here, such as absent team members.
 
 ## Project structure
 The project is called `system`.  It currently consists of a single app `clubs`.
