@@ -1,0 +1,31 @@
+{% extends 'base_content.html' %}
+{% block content %}
+  <div class="custom_container">
+    <a href="{% url 'club_list' %}" class="icon icon_expand1">
+      <i>
+        <img class="chess_icons" src="/static/images/pawn_icon.png"></img>
+      </i>
+    </a>
+    <a href="{% url 'create_club' %}" class="icon icon_expand2">
+      <i>
+        <img class="chess_icons" src="/static/images/rook_icon.png"></img>
+      </i>
+    </a>
+    <a href="{% url 'my_clubs' %}" class="icon icon_expand3">
+      <i>
+        <img class="chess_icons" src="/static/images/queen_icon.png"></img>
+      </i>
+    </a>
+    <a href="{% url 'view_applications' %}" class="icon icon_expand4">
+      <i>
+        <img class="chess_icons" src="/static/images/bishop_icon.png"></img>
+      </i>
+    </a>
+    <a href="{% url 'tournament_list' %}" class="icon icon_expand5">
+      <i>
+        <img class="chess_icons" src="/static/images/trophy_icon.png"></img>
+      </i>
+    </a>
+    <span class="directory">hello</span>
+  </div>
+{% endblock %}

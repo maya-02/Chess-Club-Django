@@ -1,0 +1,29 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="table_container" style="background: -webkit-linear-gradient(left, #232323, #616161);
+background: linear-gradient(to right, #232323, #616161);">
+    <h1 class="tbl-header">USER LIST</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>NAME</th>
+                    <th>BIO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr class="row_hover">
+                        <td>
+                            <img src="{{ user.mini_gravatar }}" alt="Gravatar of {{ user.name }}" class="rounded-circle">
+                        </td>
+                        <td>{{ user.name }}</td>
+                        <td>
+                            {{ user.bio }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}

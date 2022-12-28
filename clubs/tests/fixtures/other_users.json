@@ -1,0 +1,38 @@
+[
+  {
+    "model": "clubs.user",
+    "pk": 2,
+    "fields": {
+      "name": "Jane Doe",
+      "experience": 3,
+      "email": "janedoe@example.org",
+      "bio": "The quick brown fox jumps over the lazy dog.",
+      "password": "pbkdf2_sha256$260000$4BNvFuAWoTT1XVU8D6hCay$KqDCG+bHl8TwYcvA60SGhOMluAheVOnF1PMz0wClilc=",
+      "is_active": true
+    }
+  },
+  {
+    "model": "clubs.user",
+    "pk": 3,
+    "fields": {
+      "name": "Petra Pickles",
+      "experience": 1,
+      "email": "petrapickles@example.org",
+      "bio": "The quick brown fox jumps over the lazy dog.",
+      "password": "pbkdf2_sha256$260000$4BNvFuAWoTT1XVU8D6hCay$KqDCG+bHl8TwYcvA60SGhOMluAheVOnF1PMz0wClilc=",
+      "is_active": true
+    }
+  },
+  {
+    "model": "clubs.user",
+    "pk": 4,
+    "fields": {
+      "first_name": "Peter Pickles",
+      "experience": 2,
+      "email": "peterpickles@example.org",
+      "bio": "The quick brown fox jumps over the lazy dog.",
+      "password": "pbkdf2_sha256$260000$4BNvFuAWoTT1XVU8D6hCay$KqDCG+bHl8TwYcvA60SGhOMluAheVOnF1PMz0wClilc=",
+      "is_active": true
+    }
+  }
+]

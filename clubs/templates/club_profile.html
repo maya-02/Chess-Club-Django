@@ -1,0 +1,14 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="row content">
+    <div class="col-12">
+        <div class="profile-text">
+            <h3 class="profile-title">NAME: {{ club.name }}</h3>
+            <p></p>
+            <p class="profile-username">OWNER: {{ club.get_club_owner }}</p>
+            <p class="profile-username">LOCATION: {{ club.location }} </p>
+            <p class="profile-username">DESCRIPTION: {{ club.description }} </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

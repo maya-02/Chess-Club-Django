@@ -1,0 +1,11 @@
+[
+  {
+    "model": "clubs.club",
+    "pk": 1,
+    "fields": {
+      "name": "alpha_bravo",
+      "location": "charlie delta",
+      "description": "echo foxtrot"
+    }
+  }
+]

@@ -1,0 +1,67 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<script>
+  function filter() {
+    select = document.getElementById("type");
+    cur_url = window.location.href;
+    url = cur_url.substring(0, cur_url.indexOf("my_clubs/")+9)
+    window.location.replace(url + select.value + '/')
+  }
+</script>
+
+<div class="table_container" style="background: -webkit-linear-gradient(left, #eb6a85, #c878cb);
+background: linear-gradient(to right, #eb6a85, #c878cb);">
+  <h1 class="tbl-header">MY CLUBS</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>CLUB</th>
+          <th class="th-select">
+            <select id="type" onchange="filter();">
+              <option value=-1>TYPE</option>
+              <option value=0>ALL</option>
+              <option value=1>OWNER</option>
+              <option value=2>OFFICER</option>
+              <option value=3>MEMBER</option>
+            </select>
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if type %}
+          <tr>
+            <td>
+              havent joined a club as {{ type }}
+            </td>
+          </tr>
+        {% endif %}
+        {% for membership in memberships %}
+          <tr>
+            <td> 
+              <a href="{% url 'club_members' membership.club.id %}" class="btn2"> 
+                {{ membership.club.name }}
+              </a>
+            </td>
+            <td> {{ membership.get_type}} </td>
+            {% if membership.type != 3 %}
+            <td> 
+              <a href="{% url 'view_app_to_club' membership.club.id %}" class="btn2">
+                see applications ({{ membership.club.num_of_applications }})
+              </a>
+            </td>
+            <td>
+              <a href="{% url 'create_tournament' membership.club.id %}" class="btn2">
+                create tournament
+              </a>
+            </td>
+            {% else %} 
+            <td></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

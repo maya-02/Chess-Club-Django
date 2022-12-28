@@ -1,0 +1,23 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-lg-6 col-xl-4">
+      <h3>edit profile</h3>
+        <form action="{% url 'edit_profile' %}" method="post">
+          {% csrf_token %}
+          {% include 'partials/bootstrap_form.html' with form=form %}
+            <button type="submit" class="btn1">apply changes</button>
+        </form>
+    </div>
+      <div class="col-xs-12 col-lg-6 col-xl-8">
+      </div>
+      <div style="margin-top: 1cm">
+          <input type="button" title="Redirects to WordPress to change Gravatar" value="Change Gravatar"
+                 onclick="window.open('https://wordpress.com/log-in?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3Dfa2bb53b4f6c71f05a206e731efa443986e0499992f4c07bd898358bd5b67cd7%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token')"/>
+          </br>
+          <label style="font-size: small">Note: Remember to use the same email as seen above.</label>
+      </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="table_container" style="background: -webkit-linear-gradient(left, #eb6a85, #c878cb);
+background: linear-gradient(to right, #eb6a85, #c878cb);">
+  <h1 class="tbl-header">TOURNAMENTS</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>TOURNAMENT</th>
+          <th>DESCRIPTION</th>
+          <th>DEADLINE</th>
+          <th>CLUB</th>
+          <th>ORGANISER</th>
+          <th>CO-ORGANISER</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in tournaments %}
+          {% for tournament in i %}
+            <tr>
+              <td>{{ tournament.name }}</td>
+              <td>{{ tournament.description }}</td>
+              <td>{{ tournament.deadline }}</td>
+              <td>{{ tournament.club.name }}</td>
+              <td></td>
+              <td></td>
+              <td>
+                {% if tournament.num_of_contestants < tournament.capacity and user not in tournament.contestants %}
+                  <a href="{% url 'sign_up_tournament' tournament.id %}" class="btn2">
+                    apply ({{ tournament.num_of_contestants }}/{{ tournament.capacity }})
+                  </a>
+                {% elif user in tournament.contestants %}
+                  <a href="{% url 'withdraw_tournament' tournament.id %}" class="btn2">
+                    withdraw
+                  </a>
+                {% elif tournament.deadline < today %}
+                  <a class="btn2">
+                    over
+                  </a>
+                {% else %}
+                  <a class="btn2">
+                    full
+                  </a>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+  {% endblock %}

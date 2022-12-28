@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<div id="cover-image" >
+  <div class="animation">
+    <div class="c2">
+      <h2 style="font: 500 21px 'Droid Sans', sans-serif; margin-bottom: 80px;"> WELCOME BACK </h2>
+      <h2 style="font: 500 10px 'Droid Sans', sans-serif; color: #4e85d7; text-align: left;"> Login </h2>
+      {% if messages %}
+        <span class="messages">
+            {% for message in messages %}
+            <span {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+            {% endfor %}
+        </span>
+      {% endif %}
+      <form action="{% url 'log_in' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next", value="{{ next }}">
+        {% include 'partials/bootstrap_form.html' with form=form %}
+        <input type="submit" value="LOGIN" class="btn3">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

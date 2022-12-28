@@ -1,0 +1,30 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="table_container" style="background: -webkit-linear-gradient(left, #eb6a85, #c878cb);
+background: linear-gradient(to right, #eb6a85, #c878cb);">
+  <h1 class="tbl-header">APPLICATIONS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>USER</th>
+        <th>STATEMENT</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for application in applications %}
+        <tr>
+          <td>
+            <img src="{{ user.mini_gravatar }}" alt="Gravatar of {{ application.user.email }}" class="rounded-circle">
+            <a href="{% url 'show_user' application.user.id %}">{{ application.user.name }}</a>
+          </td>
+          <td> {{ application.statement }} </td>
+          <td> 
+              <a href="{% url 'change_app_status' application.id 1 application.club.id %}" class="btn4" style="margin-right: 20px;"> accept </a>
+              <a href="{% url 'change_app_status' application.id 0 application.club.id %}" class="btn4"> reject </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</div>
+{% endblock %}

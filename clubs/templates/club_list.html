@@ -1,0 +1,45 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="table_container" style="background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+background: linear-gradient(to right, #25c481, #25b7c4);">
+  <h1 class="tbl-header">CLUBS</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>CLUB</th>
+          <th>OWNER</th>
+          <th>DESCRIPTION</th>
+          <th>MEMBERS</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for club in clubs %}
+          {% if club.get_club_owner %}
+            <tr class="row_hover">
+              <td>
+                <a href="{% url 'club_profile' club.id %}" class=cust_link>
+                  {{ club.name }}
+                </a>
+              </td>
+              <td>
+                {{ club.get_club_owner.name }}
+              </td>
+              <td>
+                {{ club.description }}
+              </td>
+              <td>
+                {{ club.num_of_members }}
+              </td>
+              <td>
+                <a href="{% url 'new_application' club.id %}" class="btn2 ">
+                apply
+                </a>
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

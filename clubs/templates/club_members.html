@@ -1,0 +1,52 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="table_container" style="background: -webkit-linear-gradient(left, #232323, #616161);
+background: linear-gradient(to right, #232323, #616161);">
+  <h1 class="tbl-header">CLUB</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>TYPE</th>
+          {% if type != 3 %}
+            <th>EMAIL</th>
+            <th>EXPERIENCE</th>
+            <th>STATEMENT</th>
+            <th></th>
+          {% endif %}
+        </tr>
+      </thead>
+      </tbody>
+        {% for membership in memberships %}
+          <tr>
+            <td>
+              <img src="{{ membership.user.mini_gravatar }}" alt="Gravatar of {{ membership.user.email }}" class="rounded-circle" >
+              {{ membership.user.name }}
+            </td>
+            <td>{{ membership.get_type }}</td>
+            {% if type != 3 %}
+              <td>
+                <a href="{% url 'show_user' membership.user.id %}" style="text-transform: none !important;">{{ membership.user.email }}</a>
+              </td>
+              <td> 
+                {{ membership.user.get_experience }}
+              </td>
+              <td>
+                {{ membership.statement }}
+              </td>
+              <td>
+                {% if type != 3 and membership.type != 1 and membership.user != user %}
+                  <a href="{% url 'change_member_type' membership.user.id membership.club.id 1 %}" class="btn4"> PROMOTE </a>
+                  <a href="{% url 'change_member_type' membership.user.id membership.club.id 0 %}" class="btn4"> DEMOTE </a>
+                  {% if type == 1 and membership.type == 2 %}
+                    <a href="{% url 'change_member_type' membership.user.id membership.club.id 2 %}" class="btn4"> OWNER </a>
+                  {% endif %}
+                {% endif %}
+              </td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </body>
+    </table>
+</div>
+{% endblock %}
